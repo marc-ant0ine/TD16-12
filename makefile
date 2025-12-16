@@ -1,4 +1,4 @@
-# Makefile pour le système de gestion d'étudiants
+# Makefile 
 
 # Compilateur et options
 CC = gcc
