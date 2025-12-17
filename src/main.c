@@ -3,6 +3,7 @@
 #include "api.h"
 #include "sorting.h"
 #include "binary_fields.h"
+#include "exo1.h"
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
