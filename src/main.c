@@ -47,6 +47,27 @@ int main(int argc, char *argv[]) {
         return 1;
     }
     
+    // ===== EXERCICE 1 : RECALCUL =====
+    if (apply_recalcul) {
+        printf("\n=== EXERCICE 1 : RECALCUL DES MOYENNES ===\n");
+        
+        // Afficher les moyennes avant normalisation
+        printf("\nMoyennes avant normalisation :\n");
+        afficher_resume_moyennes(class);
+        
+        // Appliquer la normalisation
+        printf("\nApplication de la normalisation...\n");
+        bool succes = miseAJourNotes(class, normalisation);
+        
+        if (!succes) {
+            fprintf(stderr, "Échec du recalcul des moyennes\n");
+        } else {
+            // Afficher les moyennes après normalisation
+            printf("\nMoyennes après normalisation :\n");
+            afficher_resume_moyennes(class);
+        }
+    }
+    
     // Sauvegarde si demandé
     if (binary_file && save_mode) {
         printf("\nSaving to binary file: %s\n", binary_file);
@@ -60,6 +81,10 @@ int main(int argc, char *argv[]) {
         printf("\n=== DISPLAYING POLES STATISTICS ===\n");
         API_display_results_per_field(class);
     } else {
+        // Afficher avec ou sans recalcul
+        if (apply_recalcul) {
+            printf("\n=== AFFICHAGE APRÈS RECALCUL ===\n");
+        }
         API_display(class);
         
         // Démonstration du tri
@@ -81,3 +106,4 @@ int main(int argc, char *argv[]) {
     
     return 0;
 }
+
